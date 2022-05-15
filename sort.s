@@ -7,7 +7,7 @@ _start:
             li  $10, 0x100              #10=$4, sets the base address of the array to $10
             li  $11, 0x10f              # end of array
 
-            ori $1,$0,0x114
+            ori $1,$0,0x114		#prepared to set the array
             ori $2,$0,0x514
             ori $3,$0,0x1919
             ori $4,$0,0x810
@@ -28,13 +28,13 @@ _loop:
 	    addi    $10, $10, 4     # advance the array to start at the next location from last time
             beq $10,$11,end
             nop
-            j   _loop                # jump back to loop so we can compare next two elements
+            j   _loop               # jump back to loop so we can compare next two elements
             nop
 
-_swap:       sw  $t0, 4($10)         # store the greater numbers contents in the higher position in array (swap)
+_swap:       sw  $t0, 4($10)        # store the greater numbers contents in the higher position in array (swap)
             sw  $t1, 0($10)         # store the lesser numbers contents in the lower position in array (swap)
             li  $10, 0x100              # resets the value of $10 back to zero so we can start from beginning of array
-            j   _loop                # jump back to the loop so we can go through and find next swap
+            j   _loop               # jump back to the loop so we can go through and find next swap
             nop
 
 end:
